@@ -1,69 +1,46 @@
-import { Button, Typography, Container, Box } from "@mui/material";
+import React from "react";
+import Navbar from "../components/navbar/Navbar";
+import { Link } from "react-router-dom";
+import "../styles/Home.css";
 
-function Home() {
+export default function Home() {
   return (
-    <Container maxWidth="lg">
+    <div className="home">
+      <Navbar />
 
-      <Box
-        sx={{
-          mt: 8,
-          textAlign: "center",
-        }}
-      >
+      <section className="hero">
+        <div className="hero-left">
+          <h1 className="hero-title">
+            YieldSense AI
+            <br />
+            <span>Smart Crop Yield Prediction</span>
+          </h1>
 
-        <Typography
-          variant="h2"
-          fontWeight="bold"
-          color="green"
-        >
-          🌾 YieldSense AI
-        </Typography>
+          <p className="hero-subtitle">
+            Empowering agriculture through AI driven weather analytics, soil quality assessment, and high-precision harvest forecasting.
+          </p>
 
-        <Typography
-          variant="h5"
-          sx={{ mt: 2 }}
-        >
-          AI Powered Crop Yield Prediction &
-          Agricultural Productivity Forecasting
-        </Typography>
+          <div className="hero-buttons">
+            <Link to="/register" className="btn-hero-primary">Get Started</Link>
+            <Link to="/dashboard" className="btn-hero-outline">Explore Dashboard</Link>
+          </div>
+        </div>
 
-        <Typography
-          sx={{
-            mt: 3,
-            color: "gray",
-          }}
-        >
-          Predict crop yield using weather,
-          soil and rainfall data.
-        </Typography>
-
-        <Box
-          sx={{
-            mt: 5,
-          }}
-        >
-
-          <Button
-            variant="contained"
-            sx={{
-              mr: 2,
-            }}
-          >
-            Login
-          </Button>
-
-          <Button
-            variant="outlined"
-          >
-            Register
-          </Button>
-
-        </Box>
-
-      </Box>
-
-    </Container>
+        <div className="hero-right">
+          <div className="portal-card">
+            <h4>Select Portal / Access Role</h4>
+            <Link to="/login?role=farmer" className="portal-link farmer">
+              🌾 Farmer Portal
+            </Link>
+            <Link to="/login?role=admin" className="portal-link admin">
+              🛡️ Admin Dashboard
+            </Link>
+            <Link to="/login?role=analyst" className="portal-link researcher">
+              📊 Researcher / Analyst
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
-
-export default Home;

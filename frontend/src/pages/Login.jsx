@@ -1,69 +1,138 @@
-import {
-  Container,
-  Paper,
-  Typography,
-  TextField,
-  Button,
-  Box
-} from "@mui/material";
+import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
-function Login() {
+export default function Login() {
   return (
-    <Container maxWidth="sm">
-
-      <Paper
-        elevation={6}
-        sx={{
-          mt: 10,
-          p: 4,
-          borderRadius: 3
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "linear-gradient(to bottom right, #0d9488, #16a34a)",
+        fontFamily: "sans-serif"
+      }}
+    >
+      <div
+        style={{
+          width: "430px",
+          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          backdropFilter: "blur(16px)",
+          borderRadius: "24px",
+          padding: "40px",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
         }}
       >
-
-        <Typography
-          variant="h4"
-          align="center"
-          fontWeight="bold"
-          color="green"
+        <h1
+          style={{
+            fontSize: "2.25rem",
+            fontWeight: "bold",
+            color: "#ffffff",
+            textAlign: "center",
+            margin: 0
+          }}
         >
-          🌾 YieldSense AI
-        </Typography>
-
-        <Typography
-          align="center"
-          sx={{ mt: 1, mb: 3 }}
+          Welcome Back
+        </h1>
+        <p
+          style={{
+            textAlign: "center",
+            color: "#e5e7eb",
+            marginTop: "8px"
+          }}
         >
-          Login to continue
-        </Typography>
+          Login to YieldSense AI
+        </p>
 
-        <TextField
-          fullWidth
-          label="Email"
-          margin="normal"
+        <input
+          placeholder="Email"
+          style={{
+            width: "100%",
+            marginTop: "32px",
+            padding: "16px",
+            borderRadius: "12px",
+            border: "none",
+            outline: "none",
+            boxSizing: "border-box"
+          }}
         />
-
-        <TextField
-          fullWidth
+        <input
           type="password"
-          label="Password"
-          margin="normal"
+          placeholder="Password"
+          style={{
+            width: "100%",
+            marginTop: "20px",
+            padding: "16px",
+            borderRadius: "12px",
+            border: "none",
+            outline: "none",
+            boxSizing: "border-box"
+          }}
         />
 
-        <Button
-          fullWidth
-          variant="contained"
-          sx={{
-            mt: 3,
-            py: 1.5
+        <button
+          style={{
+            width: "100%",
+            backgroundColor: "#22c55e",
+            marginTop: "24px",
+            padding: "16px",
+            borderRadius: "12px",
+            color: "#ffffff",
+            fontWeight: "bold",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "1rem"
           }}
         >
           Login
-        </Button>
+        </button>
 
-      </Paper>
+        <div
+          style={{
+            textAlign: "center",
+            margin: "24px 0",
+            color: "#ffffff"
+          }}
+        >
+          OR
+        </div>
 
-    </Container>
+        <button
+          style={{
+            width: "100%",
+            backgroundColor: "#ffffff",
+            borderRadius: "12px",
+            padding: "16px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "12px",
+            border: "none",
+            fontWeight: "600",
+            cursor: "pointer"
+          }}
+        >
+          <FcGoogle size={28} />
+          Continue with Google
+        </button>
+
+        <p
+          style={{
+            textAlign: "center",
+            color: "#ffffff",
+            marginTop: "20px",
+            fontSize: "0.9rem"
+          }}
+        >
+          Don't have an account?{" "}
+          <Link
+            to="/register"
+            style={{ color: "#ffffff", fontWeight: "bold" }}
+          >
+            Register
+          </Link>
+        </p>
+      </div>
+    </div>
   );
 }
-
-export default Login;

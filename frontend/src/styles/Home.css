@@ -1,0 +1,143 @@
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px; /* Space for fixed navbar */
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 8%;
+  gap: 4rem;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 620px;
+}
+
+/* FIXED: Changed from white (#ffffff) to dark slate for high contrast */
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+  color: #0f172a; 
+}
+
+/* Bright green gradient for the highlighted text */
+.hero-title span {
+  background: linear-gradient(to right, #10b981, #0284c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* FIXED: Darkened subtitle text so paragraph is clearly readable */
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: #475569; 
+  line-height: 1.6;
+  margin-bottom: 2.2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.btn-hero-primary, .btn-hero-outline {
+  padding: 0.9rem 2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+/* FIXED: Primary Green Button with clear white text */
+.btn-hero-primary {
+  background: #10b981;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+.btn-hero-primary:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4);
+}
+
+/* FIXED: Outline Button changed from faint white border to clean green/slate outline */
+.btn-hero-outline {
+  border: 2px solid #10b981;
+  color: #10b981 !important;
+  background: transparent;
+}
+
+.btn-hero-outline:hover {
+  background: #10b981;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* FIXED: Portal card given solid crisp white background & border */
+.portal-card {
+  background: #ffffff;
+  padding: 1.8rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  max-width: 340px;
+}
+
+.portal-card h4 {
+  color: #0f172a;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.portal-link {
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  transition: transform 0.15s ease;
+}
+
+.portal-link:hover {
+  transform: translateX(4px);
+}
+
+.portal-link.farmer { background: #dcfce7; color: #14532d; }
+.portal-link.admin { background: #fef3c7; color: #78350f; }
+.portal-link.researcher { background: #e0f2fe; color: #0369a1; }
+
+@media (max-width: 968px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  .hero-buttons {
+    justify-content: center;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
