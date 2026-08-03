@@ -1,15 +1,3 @@
-import axios from "axios";
+const BASE_URL = "http://127.0.0.1:8000";
 
-const API = axios.create({
-  baseURL: "http://localhost:5000/api", // Adjust port to match your backend
-});
-
-API.interceptors.request.use((req) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    req.headers.Authorization = `Bearer ${token}`;
-  }
-  return req;
-});
-
-export default API;
+export default BASE_URL;
