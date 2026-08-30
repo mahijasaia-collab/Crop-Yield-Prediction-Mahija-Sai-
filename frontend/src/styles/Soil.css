@@ -1,0 +1,369 @@
+/* ================= GOOGLE FONT ================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4faf5;
+}
+
+/* ================= PAGE ================= */
+
+.soil-container{
+
+    min-height:100vh;
+
+    padding:120px 7% 60px;
+
+    background:linear-gradient(to bottom,#eef9f0,#ffffff);
+
+}
+
+/* ================= HEADER ================= */
+
+.soil-header{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.soil-header h1{
+
+    color:#166534;
+
+    font-size:44px;
+
+    margin-bottom:12px;
+
+}
+
+.soil-header p{
+
+    color:#555;
+
+    font-size:18px;
+
+}
+
+/* ================= SEARCH ================= */
+
+.soil-search{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:40px;
+
+}
+
+.soil-search input{
+
+    width:380px;
+
+    padding:15px 18px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:white;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    font-size:16px;
+
+}
+
+.soil-search input:focus{
+
+    outline:none;
+
+    border:2px solid #22c55e;
+
+}
+
+.soil-search button{
+
+    background:#16a34a;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 35px;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.soil-search button:hover{
+
+    background:#15803d;
+
+    transform:translateY(-3px);
+
+}
+
+/* ================= SCORE ================= */
+
+.soil-score-card{
+
+    max-width:700px;
+
+    margin:0 auto 45px;
+
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+
+    color:white;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+
+}
+
+.soil-score-card h2{
+
+    font-weight:500;
+
+}
+
+.soil-score-card h1{
+
+    font-size:65px;
+
+    margin-top:10px;
+
+}
+
+/* ================= GRID ================= */
+
+.soil-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-bottom:45px;
+
+}
+
+.soil-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    text-align:center;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.soil-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.soil-card h3{
+
+    color:#166534;
+
+    margin-bottom:15px;
+
+}
+
+.soil-card h2{
+
+    color:#22c55e;
+
+    font-size:38px;
+
+    margin-bottom:10px;
+
+}
+
+.soil-card p{
+
+    color:#666;
+
+    font-weight:600;
+
+}
+
+/* ================= INFO CARDS ================= */
+
+.soil-info{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+
+}
+
+.recommend-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.recommend-card h2{
+
+    color:#166534;
+
+    margin-bottom:20px;
+
+}
+
+/* ================= CROP TAGS ================= */
+
+.crop-list{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.crop-list span{
+
+    background:#dcfce7;
+
+    color:#166534;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+/* ================= FERTILIZER ================= */
+
+.recommend-card h3{
+
+    color:#16a34a;
+
+    font-size:28px;
+
+}
+
+/* ================= AI ================= */
+
+.recommend-card p{
+
+    line-height:1.8;
+
+    color:#555;
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+.soil-header h1{
+
+    font-size:34px;
+
+}
+
+.soil-search{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.soil-search input{
+
+    width:100%;
+
+}
+
+.soil-search button{
+
+    width:100%;
+
+}
+
+}
+/* ================= SOIL IMPROVEMENTS ================= */
+
+.soil-improvements {
+
+    padding-left: 20px;
+
+    margin-top: 10px;
+
+}
+
+.soil-improvements li {
+
+    margin-bottom: 12px;
+
+    color: #555;
+
+    line-height: 1.7;
+
+}
+
+.soil-score-card p {
+
+    margin-top: 8px;
+
+    opacity: 0.9;
+
+}
+
+.soil-search button:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+}

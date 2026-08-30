@@ -1,39 +1,128 @@
-import BASE_URL from "./api";
+import axios from "axios";
 
-export const registerUser = async (user) => {
-  const response = await fetch(`${BASE_URL}/auth/register`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
-  });
+const BASE_URL = "http://127.0.0.1:8000";
 
-  return await response.json();
-};
+// =========================================================
+// ROLE NORMALIZER
+// =========================================================
 
-export const loginUser = async (user) => {
-  const response = await fetch(`${BASE_URL}/auth/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
-  });
+function normalizeRole(role) {
+  if (role === "officer") {
+    return "agricultural_officer";
+  }
 
-  return await response.json();
-};
+  if (
+    role === "farmer" ||
+    role === "admin" ||
+    role === "agricultural_officer"
+  ) {
+    return role;
+  }
 
-export const googleLogin = async (token) => {
-  const response = await fetch(`${BASE_URL}/auth/google`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      token,
-    }),
-  });
+  return role;
+}
 
-  return await response.json();
-};
+
+// =========================================================
+// REGISTER
+// =========================================================
+
+export async function registerUser(data) {
+
+  try {
+
+    const requestData = {
+      ...data,
+      role: normalizeRole(data.role)
+    };
+
+    console.log("=================================");
+    console.log("REGISTER REQUEST SENT TO BACKEND");
+    console.log(requestData);
+    console.log("ROLE:", requestData.role);
+    console.log("=================================");
+
+    const response = await axios.post(
+      `${BASE_URL}/auth/register`,
+      requestData
+    );
+
+    return response.data;
+
+  } catch (error) {
+
+    console.error(
+      "REGISTER API ERROR:",
+      error.response?.data || error
+    );
+
+    throw error;
+  }
+}
+
+
+// =========================================================
+// LOGIN
+// =========================================================
+
+export async function loginUser(data) {
+
+  try {
+
+    const requestData = {
+      ...data,
+      role: normalizeRole(data.role)
+    };
+
+    console.log("=================================");
+    console.log("LOGIN REQUEST SENT TO BACKEND");
+    console.log(requestData);
+    console.log("ROLE:", requestData.role);
+    console.log("=================================");
+
+    const response = await axios.post(
+      `${BASE_URL}/auth/login`,
+      requestData
+    );
+
+    return response.data;
+
+  } catch (error) {
+
+    console.error(
+      "LOGIN API ERROR:",
+      error.response?.data || error
+    );
+
+    throw error;
+  }
+}
+
+
+// =========================================================
+// GOOGLE LOGIN
+// =========================================================
+
+export async function googleLogin(token) {
+
+  try {
+
+    const response = await axios.post(
+      `${BASE_URL}/auth/google`,
+      {
+        token: token
+      }
+    );
+
+    return response.data;
+
+  } catch (error) {
+
+    console.error(
+      "GOOGLE LOGIN API ERROR:",
+      error.response?.data || error
+    );
+
+    throw error;
+  }
+}

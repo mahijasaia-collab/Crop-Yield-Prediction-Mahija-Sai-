@@ -1,29 +1,44 @@
 import React from "react";
 import Navbar from "../components/navbar/Navbar";
 import { Link } from "react-router-dom";
+import farmBg from "../assets/farm-bg.png";
+
 import {
   FaLeaf,
   FaRobot,
   FaCloudSunRain,
   FaSeedling,
-  FaArrowRight
+  FaArrowRight,
+  FaChartLine,
+  FaUsers,
+  FaCheckCircle,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt
 } from "react-icons/fa";
 
 import "../styles/Home.css";
 
 export default function Home() {
   return (
-    <div className="home">
-
+    <>
       <Navbar />
 
-      {/* ---------------- HERO ---------------- */}
+      {/* =====================================================
+          HERO SECTION
+      ===================================================== */}
 
-      <section className="hero">
-
-        <div className="hero-overlay"></div>
+      <section
+        id="home"
+        className="hero"
+        style={{
+          backgroundImage: `linear-gradient(rgba(8,35,18,.65),rgba(8,35,18,.65)),url(${farmBg})`
+        }}
+      >
 
         <div className="hero-left">
+
+          {/* HERO BADGE */}
 
           <div className="hero-badge">
 
@@ -33,6 +48,9 @@ export default function Home() {
 
           </div>
 
+
+          {/* HERO TITLE */}
+
           <h1 className="hero-title">
 
             Grow Smarter with
@@ -40,6 +58,9 @@ export default function Home() {
             <span> YieldSense AI</span>
 
           </h1>
+
+
+          {/* HERO DESCRIPTION */}
 
           <p className="hero-subtitle">
 
@@ -49,7 +70,12 @@ export default function Home() {
 
           </p>
 
+
+          {/* HERO BUTTONS */}
+
           <div className="hero-buttons">
+
+            {/* GET STARTED */}
 
             <Link
               to="/register"
@@ -61,6 +87,9 @@ export default function Home() {
               <FaArrowRight />
 
             </Link>
+
+
+            {/* DASHBOARD */}
 
             <Link
               to="/dashboard"
@@ -75,21 +104,28 @@ export default function Home() {
 
         </div>
 
+
+        {/* =====================================================
+            PORTAL SECTION
+        ===================================================== */}
+
         <div className="hero-right">
 
           <div className="portal-card">
 
             <h3>
-
               🌾 Select Portal
-
             </h3>
 
+
             <p>
-
               Choose your workspace
-
             </p>
+
+
+            {/* =================================================
+                FARMER PORTAL
+            ================================================= */}
 
             <Link
               to="/login?role=farmer"
@@ -100,21 +136,31 @@ export default function Home() {
 
             </Link>
 
+
+            {/* =================================================
+                ADMIN PORTAL
+            ================================================= */}
+
             <Link
               to="/login?role=admin"
               className="portal-link admin"
             >
 
-              🛡 Admin Dashboard
+              🛡️ Admin Portal
 
             </Link>
 
+
+            {/* =================================================
+                AGRICULTURAL OFFICER PORTAL
+            ================================================= */}
+
             <Link
-              to="/login?role=analyst"
-              className="portal-link researcher"
+              to="/login?role=agricultural_officer"
+              className="portal-link officer"
             >
 
-              📊 Research Portal
+              👨‍🌾 Agricultural Officer Portal
 
             </Link>
 
@@ -124,56 +170,91 @@ export default function Home() {
 
       </section>
 
-      {/* ---------------- FEATURES ---------------- */}
 
-      <section className="features">
+      {/* =====================================================
+          FEATURES SECTION
+      ===================================================== */}
+
+      <section
+        id="features"
+        className="features"
+      >
 
         <h2>
-
           Why Choose YieldSense AI?
-
         </h2>
+
 
         <div className="feature-grid">
 
+
+          {/* AI PREDICTION */}
+
           <div className="feature-card">
 
-            <FaRobot className="feature-icon"/>
+            <FaRobot className="feature-icon" />
 
-            <h3>AI Prediction</h3>
+            <h3>
+              AI Prediction
+            </h3>
 
             <p>
-
-              Machine Learning based crop yield prediction.
-
+              Machine Learning powered crop yield prediction
+              with high accuracy.
             </p>
 
           </div>
 
+
+          {/* WEATHER */}
+
           <div className="feature-card">
 
-            <FaCloudSunRain className="feature-icon"/>
+            <FaCloudSunRain className="feature-icon" />
 
-            <h3>Weather Analysis</h3>
+            <h3>
+              Weather Intelligence
+            </h3>
 
             <p>
-
-              Rainfall, humidity and temperature monitoring.
-
+              Real-time weather monitoring for better
+              farming decisions.
             </p>
 
           </div>
 
+
+          {/* SOIL */}
+
           <div className="feature-card">
 
-            <FaSeedling className="feature-icon"/>
+            <FaSeedling className="feature-icon" />
 
-            <h3>Soil Health</h3>
+            <h3>
+              Soil Analysis
+            </h3>
 
             <p>
+              Improve productivity through nutrient and
+              soil health analysis.
+            </p>
 
-              Analyze nutrients and improve productivity.
+          </div>
 
+
+          {/* ANALYTICS */}
+
+          <div className="feature-card">
+
+            <FaChartLine className="feature-icon" />
+
+            <h3>
+              Analytics
+            </h3>
+
+            <p>
+              Track predictions and monitor crop
+              performance easily.
             </p>
 
           </div>
@@ -182,6 +263,160 @@ export default function Home() {
 
       </section>
 
-    </div>
+
+      {/* =====================================================
+          ABOUT SECTION
+      ===================================================== */}
+
+      <section
+        id="about"
+        className="about"
+      >
+
+        <h2>
+          About YieldSense AI
+        </h2>
+
+
+        <p className="about-text">
+
+          YieldSense AI is an intelligent agriculture platform
+          developed to help farmers maximize crop production
+          using Artificial Intelligence, weather forecasting,
+          soil health monitoring and precision farming.
+
+        </p>
+
+
+        <div className="about-grid">
+
+
+          {/* FARMERS */}
+
+          <div className="about-card">
+
+            <FaUsers />
+
+            <h3>
+              1000+
+            </h3>
+
+            <p>
+              Farmers Supported
+            </p>
+
+          </div>
+
+
+          {/* ACCURACY */}
+
+          <div className="about-card">
+
+            <FaChartLine />
+
+            <h3>
+              95%
+            </h3>
+
+            <p>
+              Prediction Accuracy
+            </p>
+
+          </div>
+
+
+          {/* AI ASSISTANCE */}
+
+          <div className="about-card">
+
+            <FaCheckCircle />
+
+            <h3>
+              24/7
+            </h3>
+
+            <p>
+              AI Assistance
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          CONTACT SECTION
+      ===================================================== */}
+
+      <section
+        id="contact"
+        className="contact"
+      >
+
+        <h2>
+          Contact Us
+        </h2>
+
+
+        <div className="contact-grid">
+
+
+          {/* PHONE */}
+
+          <div className="contact-card">
+
+            <FaPhoneAlt />
+
+            <h3>
+              Phone
+            </h3>
+
+            <p>
+              +91 XXXXX XXXXX
+            </p>
+
+          </div>
+
+
+          {/* EMAIL */}
+
+          <div className="contact-card">
+
+            <FaEnvelope />
+
+            <h3>
+              Email
+            </h3>
+
+            <p>
+              support@yieldsense.ai
+            </p>
+
+          </div>
+
+
+          {/* LOCATION */}
+
+          <div className="contact-card">
+
+            <FaMapMarkerAlt />
+
+            <h3>
+              Location
+            </h3>
+
+            <p>
+              Visakhapatnam, Andhra Pradesh
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </>
   );
 }

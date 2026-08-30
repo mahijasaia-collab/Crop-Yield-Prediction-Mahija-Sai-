@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
+import { FaLeaf } from "react-icons/fa";
 import "../../styles/Navbar.css";
 
 export default function Navbar() {
@@ -8,13 +9,14 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const token = localStorage.getItem("token");
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user")) || {};
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 30);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -23,29 +25,39 @@ export default function Navbar() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.clear();
     navigate("/login");
   };
 
   return (
     <nav className={`navbar ${scrolled ? "navbar-scroll" : ""}`}>
-      <Link to="/" className="nav-brand">
-        <span className="brand-icon">🌾</span>
+
+      {/* LOGO */}
+
+      <Link
+        to="/"
+        className="nav-brand"
+        onClick={() => setIsOpen(false)}
+      >
+        <div className="brand-logo">
+          <FaLeaf className="brand-icon" />
+        </div>
 
         <div>
           <h2 className="brand-title">YieldSense AI</h2>
           <span className="brand-subtitle">
-            Smart Agriculture
+            Smart Agriculture Platform
           </span>
         </div>
       </Link>
 
+      {/* LINKS */}
+
       <div className={`nav-links ${isOpen ? "open" : ""}`}>
 
-        <Link to="/" onClick={() => setIsOpen(false)}>
+        <a href="#home" onClick={() => setIsOpen(false)}>
           Home
-        </Link>
+        </a>
 
         <a href="#features" onClick={() => setIsOpen(false)}>
           Features
@@ -61,11 +73,27 @@ export default function Navbar() {
 
         {token && (
           <>
-            <Link to="/dashboard" onClick={() => setIsOpen(false)}>
+            <Link
+              to="/dashboard"
+              onClick={() => setIsOpen(false)}
+              className={
+                location.pathname === "/dashboard"
+                  ? "active"
+                  : ""
+              }
+            >
               Dashboard
             </Link>
 
-            <Link to="/prediction" onClick={() => setIsOpen(false)}>
+            <Link
+              to="/prediction"
+              onClick={() => setIsOpen(false)}
+              className={
+                location.pathname === "/prediction"
+                  ? "active"
+                  : ""
+              }
+            >
               Prediction
             </Link>
           </>
@@ -73,13 +101,31 @@ export default function Navbar() {
 
         {token ? (
           <>
-            <span className="welcome-user">
-              👋 {user?.full_name || "Farmer"}
-            </span>
+            <div className="welcome-user">
+
+              <div className="welcome-avatar">
+                {user.full_name
+                  ? user.full_name.charAt(0).toUpperCase()
+                  : "F"}
+              </div>
+
+              <div>
+
+                <strong>
+                  {user.full_name || "Farmer"}
+                </strong>
+
+                <small>
+                  {(user.role || "Farmer").toUpperCase()}
+                </small>
+
+              </div>
+
+            </div>
 
             <button
-              onClick={handleLogout}
               className="btn-nav-register logout-btn"
+              onClick={handleLogout}
             >
               Logout
             </button>
@@ -95,8 +141,8 @@ export default function Navbar() {
 
             <Link
               to="/register"
-              onClick={() => setIsOpen(false)}
               className="btn-nav-register"
+              onClick={() => setIsOpen(false)}
             >
               Register
             </Link>
@@ -105,12 +151,15 @@ export default function Navbar() {
 
       </div>
 
+      {/* MOBILE */}
+
       <div
         className="hamburger"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
+        {isOpen ? <HiX size={30} /> : <HiMenu size={30} />}
       </div>
+
     </nav>
   );
 }

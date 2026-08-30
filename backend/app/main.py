@@ -1,11 +1,18 @@
+print("MAIN IMPORTED USERS ROUTER")
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers.users import router as users_router
-
+from app.routers.prediction import router as prediction_router
 from app.database.mongodb import client
 from app.routers.auth import router as auth_router
-from app.routers.farmers import router as farmers_router
-print("MAIN IMPORTED USERS ROUTER")
+from app.routers.analytics import router as analytics_router
+#from app.routers.farmers import router as farmers_router
+from app.routers.risk import router as risk_router
+from app.routers.soil import router as soil_router
+from app.routers.recommendation import router as recommendation_router
+from app.routers.report import router as report_router
+from app.routers import admin
+from app.routers.advice import router as advice_router
 app = FastAPI(
     title="YieldSense AI",
     description="AI Crop Yield Prediction System",
@@ -44,5 +51,16 @@ async def health():
         }
 
 app.include_router(auth_router)
-app.include_router(farmers_router)
+#app.include_router(farmers_router)
 app.include_router(users_router)
+app.include_router(prediction_router)
+app.include_router(soil_router)
+app.include_router(report_router)
+app.include_router(admin.router)
+app.include_router(analytics_router)
+app.include_router(recommendation_router)
+app.include_router(advice_router)
+app.include_router(risk_router)
+print("=" * 60)
+print("🔥 ADVICE ROUTER REGISTERED")
+print("=" * 60)
